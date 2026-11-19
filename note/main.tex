@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\DOI}[1]{\mbox{\href{https://doi.org/#1}{\nolinkurl{#1}}}}
+\newtheorem{theorem}{Theorem}
+\DeclareMathOperator{\tr}{tr}
+\title{Suppression of electronic pair order for slow lattice phonons}
+\author{Davis Rens\\SuperMatics Inc.\\ORCID 0000-0001-5839-5197}
+\date{}
+\providecommand{\ADIABATICDOI}{10.5281/zenodo.24366508}
+\providecommand{\ADIABATICSUPPDOI}{10.5281/zenodo.24366511}
+\providecommand{\ADIABATICREPO}{https://github.com/SuperMatics-Inc/slow-phonon-pair-suppression}
+\newcommand{\artifact}[2]{\if\relax\expandafter\detokenize\expandafter{#2}\relax\else
+  \par\noindent#1: \href{https://doi.org/#2}{\nolinkurl{#2}}\fi}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study the spinful Holstein and bond SSH Hamiltonians without direct electron interactions, holding the spring constant and force fixed as the ion mass increases. At positive temperature in the annealed static model, the electronic pair density matrix has norm at most one and the thermodynamic equilibrium helicity vanishes. At positive phonon energy $\Omega$ we prove exponential decay of equal-time correlations of fixed local electronic fields of opposite nonzero even charge above an explicit threshold of order $\Omega^{1/2}$. The result transfers to fixed interior density. It also gives a nonempty strict comparison region below the bare Fermi-surface benchmark $C_\infty\Omega\sqrt{\lambda_{\rm FS}}$ near, but not at, the square-lattice van Hove filling. At fixed regular filling the theorem does not establish a bound linear in $\Omega$.
+\end{abstract}
+
+\section{Model and statements}
+Take nearest-neighbor square tori of side $L$ with two spin species, bare hopping $-t$, and independent neutral harmonic oscillators. Write $\tau=k_BT$, $\beta=1/\tau$, $U=F^2/K$, and $\Omega=\hbar\sqrt{K/m}$. The energy coordinate $b=FX$ multiplies $B_\alpha$, the site occupation for Holstein or $\sum_\sigma(c_{i\sigma}^\dagger c_{j\sigma}+\mathrm{h.c.})$ on an undirected bond for bond Su--Schrieffer--Heeger (SSH). In both cases $\|B_\alpha\|\le2$. There are no direct electron interactions. At $\Omega=0$ use the Gaussian coordinate integral with variance $U/\beta$, weighted by the full electronic partition function. Subtract the free oscillator free energy throughout.
+
+\begin{theorem}[Static endpoint]
+At $\Omega=0$ and $\tau>0$, the electronic two-particle density matrix on the normalized antisymmetric two-particle space satisfies $0\le\Gamma\le I$, when indexed by ordered spin-orbital pairs $i<j$. The isothermal electronic helicity modulus vanishes in the thermodynamic limit at fixed finite chemical potential or fixed limiting canonical density $0<n<2$. The empty and full sectors have zero helicity at every volume; the full sector has $\Gamma=I$.
+\end{theorem}
+\begin{theorem}[Slow-phonon regime]\label{thm:slow}
+For $t,U,\Omega>0$ set $(E,L_*)=(t,2^{26})$ for Holstein and $(t+U,2^{40})$ for bond SSH. If $\tau>0$ and
+\begin{equation}\label{eq:criterion}
+\tau^4\ge L_* U\Omega^2(E+\tau),
+\end{equation}
+then equal-time two-point correlations of fixed finite-support electronic fields of opposite nonzero even charge decay exponentially. This holds uniformly in grand-canonical volume and real chemical potential, and in thermodynamic limits of periodic canonical states at fixed interior density. Define $T_{\rm pair}$ as the supremum of temperatures with algebraic correlations of some fixed finite-support charge-two electronic field in these states, or zero if none. Fixed-momentum oscillations and multiplicative logarithms are allowed. Then
+\begin{equation}\label{eq:bound}
+ k_BT_{\rm pair}\le \tau_*,\qquad
+ \tau_*^4=A(E+\tau_*),\qquad A=L_*U\Omega^2.
+\end{equation}
+An ordinary BKT transition detected by those fields obeys the bound without assuming the jump. There is no positive-mass finite-volume canonical correlation or flux-response claim, no bound on a helicity-only transition, and no bound on order detectable only by phonon-dressed operators. At $U=0$ use the free model directly.
+\end{theorem}
+
+\section{The annealed static state}
+At fixed displacement, the electronic Gibbs state in either ensemble is diagonal in occupations of a one-body eigenbasis. On the wedge space indexed by $i<j$, use $\Gamma_{ij,kl}=\langle c_i^\dagger c_j^\dagger c_l c_k\rangle$. Its eigenvalues in the energy basis are joint occupation probabilities in $[0,1]$. Unitary change of basis and averaging with the positive electronic-partition-weighted displacement law preserve the bound. Thus $\|\Gamma\|/L^2\le L^{-2}$, excluding Yang pair off-diagonal long-range order even for system-size-dependent eigenvectors.
+
+For the helicity, put total electron twist $\phi=\phi_A+\phi_B$ on two parallel cuts separated by $\lfloor L/2\rfloor$. Gauge equivalence makes only their sum relevant. The pair phase gradient is $2\phi/L$ and the helicity per site is $-\tau\partial_A\partial_B\log Z/4$ at zero twist. Each first partition derivative vanishes by transposition for every displacement and fugacity, and the Hamiltonian has no mixed derivative because the cuts are disjoint. The conditional mixed log derivative therefore averages without a displacement covariance.
+
+The conditional density of any coordinate, with all other coordinates held fixed, is proportional to $e^{-\beta b^2/(2U)}Z_{\rm el}(b)$. The bound $|\partial_b\log Z_{\rm el}|\le2\beta$ gives a Gaussian tail $C_{\beta,U}e^{-\beta R^2/(4U)}$ after changing the constant; compare both integrals to $Z_{\rm el}(0)$ and use $e^{\pm2\beta|b|}$. Thus we may restrict to $|b|\le R_L=c\sqrt{\log(L+2)}$ at all sites or bonds. The omitted part is negligible: the union bound and the Gaussian moments bound the tail of any fixed polynomial in $L$ and $\max |b|$, and the conditional mixed curvature is at most $2\beta^2\|\mathrm d\Gamma(j_A)\|\|\mathrm d\Gamma(j_B)\|$, where $j_A$ and $j_B$ are the one-body cut currents. This last estimate is thermal trace H\"older.
+
+On the cutoff let $J=t+R_L$, $H_*=4t+5R_L$, so the one-body spectrum lies in $[-H_*,H_*]$. For complex fugacity $e^{\beta\mu+i\theta}$ and $|\theta|\le\pi/2$, the antiperiodic frequencies shifted by $\theta/\beta$ have absolute values $\ge\pi/(2\beta)$. Exponential conjugation of the one-body resolvent with rate $a=(1+16\beta J)^{-1}$ changes the hopping matrix by norm at most $4J(e^a-1)\le 1/(2\beta)$. Hence each resolvent matrix element is bounded by $2e^{-a d(x,y)}/|\omega_k+\theta/\beta|$, where $d$ is graph distance and $\omega_k=(2k+1)\pi/\beta$. Differentiating the paired Matsubara partial-fraction formula for the Fermi matrix gives a sum of terms $\tr(R j_A R j_B)$ for the mixed log derivative. Two resolvents must cross the cut separation; the sum is bounded by a polynomial in $L,J,\beta$ times $e^{-2a(\lfloor L/2\rfloor-2)}$. This proves the grand-canonical statement.
+
+For canonical coefficient extraction let $D=2L^2$, $a_N=[z^N]\det(1+z e^{-\beta h})$, and set real $z=a_{N-1}/a_N$ while taking derivatives. The coefficient sequence is log concave by convolution with each positive linear polynomial (expand the log-concavity inequality); thus $z^N a_N\ge Z_0/(D+1)$ with $Z_0=\det(1+z e^{-\beta h})$. Counting extensions of an $(N-1)$-subset gives $a_N/a_{N-1}$ between $(D-N+1)e^{\pm\beta H_*}/N$, so $|\mu|\le H_*+O_{n,\beta}(1)$. The real-fugacity occupations satisfy $v=\sum_i p_i(1-p_i)\ge c_{n,\beta}D e^{-2\beta H_*}$.
+
+On the complementary arcs $|\theta|\in[\pi/2,\pi]$, differentiate the trace instead of the log. In a real eigenbasis each cut current is pure imaginary with zero diagonal. The two bilinear insertions must undo the same one-orbital swap; for a pair $i,j$ they leave a product trace on the spectators. Each active Boltzmann weight on the simplex is a geometric interpolant of two endpoint weights, bounded in sum by the sum of the endpoints. The spectator product, divided by its real-fugacity counterpart, is bounded by $e^{-v+1/2}$, since $|1-p+p e^{i\theta}|\le e^{-p(1-p)}$ and only two modes were omitted. Thus $|\partial_A\partial_B Z_\theta|/Z_0$ is bounded by a polynomial times $e^{-v+1/2}$. On the first arcs the earlier log estimate applies with $|Z_\theta|\le Z_0$ and zero first derivatives. Circle extraction and the factor at most $D+1$ for normalization prove the canonical result; both bounds beat every inverse power on the chosen cutoff. This is an isothermal flux calculation, not a statement about the Drude weight.
+
+\section{Quantum phonons: the small parameter}
+The harmonic thermal Wick expansion is equivalent to a time-ordered Gaussian integral. In energy coordinates its covariance is
+\[
+ \frac U\beta\sum_{k\in\mathbb Z}\frac{\Omega^2 e^{i\nu_k(u-v)}}{\nu_k^2+\Omega^2},\qquad \nu_k=\frac{2\pi k}{\beta}.
+\]
+This is the Fourier inverse of the periodic oscillator operator, with the prefactor fixed by the static variance. Separate the scalar zero mode and integrate only the independent nonzero modes. Their covariance has absolute sup norm at most $U\beta\Omega^2/12$, by summing the positive- and negative-frequency $1/k^2$ bounds. The exact extra Wick vertex is
+\[
+ +\frac12\sum_\alpha\int_0^\beta du\,dv\,D_*(u,v)B_\alpha(u)B_\alpha(v).
+\]
+The equality denotes a time-ordered series, not an equal-time operator identity. In each finite-volume sector the electronic Hilbert space is finite dimensional and the linear matrix potential is norm-bounded by a constant times the sum of absolute coordinates. The matrix-valued harmonic Feynman--Kac formula gives the normalized Gaussian path trace; alternatively truncate the potentials and take the form limit, dominated in the path integral by Gaussian exponential moments of the integrated absolute field. Wick contraction of the path expansion gives the factor $1/2$ and both Dyson signs cancel. Holstein retains arbitrary real static potentials.
+
+For SSH it is necessary to handle unbounded hopping. Independently for each bond draw $x$ from the Gaussian conditioned on $|x|\le R=4096(t+U+\tau)$. Replace it by an independent tail value with the original tail probability. This yields exactly the unrestricted Gaussian. Relative to the free hopping $-t+x$, the tail integral gives a factor $1+W_x$, with
+\[
+ W_x=\int_{|b|>R} d\gamma(b)\left[e^{-(b-x)\int_0^\beta B(u)du}-1\right].
+\]
+In the absolute coefficient norm assigning a factor $e^{4m}$ to a vertex with $2m$ fermion fields, the four monomials of one bond yield
+\[
+ \|W_x\|\le \int_{|b|>R}d\gamma(b)\,e^{4e^4\beta|b-x|}
+ \le 2e^{-\beta R^2/(8U)}.
+\]
+Indeed $4e^4<256$, $|b-x|\le2|b|$, and $512|b|\le b^2/(4U)$ in the tail. The formal $\log(1+W_x)$ converges absolutely in this submultiplicative norm and costs at most $2\|W_x\|$. Its vertices still occupy at most one bond. Including the two orientations, the per-site tail cost is $8e^{-\beta R^2/(8U)}$. The nonzero-mode vertex costs at most $(2/3)e^8 U\beta^3\Omega^2\le4096 U\beta^3\Omega^2$ per oscillator, because it contains at most $16$ monomial products with four fields and the time integral gives $\beta^2$.
+For a coefficientwise bound at fixed labels and times, represent each ordered vertex by a full time cube with the factor $1/m!$. Each specified valence-$2m$ coefficient is bounded by $\int_{|b|>R}(2|b|)^m/m!\,d\gamma(b)$ before summing its four monomial choices per occurrence of $B$. Use the positive convolution series $\sum_{k\ge1}W^k/k$ to bound the log coefficients. Integration and valence weighting give the same budget, independent of the reference coordinates. For the quantum vertex use the uniform pointwise covariance bound before summing labels and integrating times.
+
+\section{Connected expansion and fixed density}
+Let $h$ be the reference one-body Hamiltonian and $J$ a bound on its hopping magnitudes. Center the diagonal weight $W=\exp(a d)$ at any row or column site, with $d$ the graph distance to that site and $a=(1+16\beta J)^{-1}$. The Schur estimate gives $\|WhW^{-1}-h\|\le4J(e^a-1)\le8Ja$, so for $P=WhW^{-1}-h$ we have $\beta\|P\|\le1/2$. The same estimate holds for $W^{-1}$. The odd-frequency resolvent has norm at most $1/|\omega_k|$, its conjugate at most $2/|\omega_k|$, and their difference at most $2\|P\|/\omega_k^2$. The free ordered covariance $C_h(v)$ has norm at most one. Its scalar identity jump cancels in the conjugated difference, whose resolvent series converges absolutely, including at the ordered coincident-time limits. Thus
+\[
+\|WC_h(v)W^{-1}\|\le1+\frac{2\|P\|}{\beta}\sum_{k\in\mathbb Z}\omega_k^{-2}\le\frac54,
+\qquad \frac1\beta\sum_{k\in\mathbb Z}\omega_k^{-2}=\frac{\beta}{4}.
+\]
+Taking a distance-weighted row or column and using Cauchy--Schwarz bounds the sum over a child anchor at fixed times and fixed leg offsets. Each leg can be one step from its anchor, so the edge weight $\exp(a d(x,x')/2)$ costs at most $e^a$ times the corresponding leg-to-leg weight. The torus sum of $\exp(-a d)$ is at most $(1+2/a)^2$. Hence the attachment bound is $e^a(5/4)(1+2/a)<30(1+4\beta J)$; we use $Q=64(1+4\beta J)$.
+
+In a Wick determinant put a variable on each inter-vertex contraction. The Brydges--Kennedy forest formula \cite{bk} sums edge derivatives over forests with interpolation the least edge parameter on a path and zero between components. For a monomial, give labelled edge copies independent uniform weights and partition their cube by the greedy maximum spanning tree of each component. Non-tree copies lie below the minimum on the tree path. Factoring by components gives trees for the log. Each tree derivative contracts one unused leg at each end. The interpolation matrix is an integral of threshold partition matrices, hence a Gram matrix of unit vectors. Tensor the one-body space with these vectors: the minor is a free time-ordered thermal moment of fields with norms at most one. Trace H\"older gives the bound one, including prescribed equal-time order.
+
+If $w_m$ is the per-site absolute coefficient mass of interaction vertices of valence $2m$, the rooted attachment sum is bounded by iteration from zero of
+\[
+ B\longmapsto Q\sum_{m\ge1}(2m)w_m\exp(2m B).
+\]
+The initial $2m$ chooses a leg for the parent. The exponential distributes unordered children with denominator $k!$, from partitioning labelled descendants. Bound descendants uniformly at fixed parent leg and time, sum the child anchor at fixed offsets and times, then integrate the coefficient envelope. Thus $Q\sum_m w_m e^{4m}\le1/4$ suffices for an absolute rooted expansion and leaves an analytic disk for small additional sources when the inequality has slack. The unrooted log is bounded by the same sum with one vertex fixed per volume; the connected series exponentiates to the full Wick series by forest factorization. For Holstein $J=t$, so $Q\le2^8(1+\beta t)$. For SSH let $x_*=\beta(t+U+\tau)\ge1$. Then $J\le4097(t+U+\tau)$, $Q\le2^{21}x_*$, and the tail contribution is bounded by $2^{24}x_*\exp(-2^{21}x_*)<1/64$. Counting both quantum orientations for SSH gives a budget of at most $2^{34}U\beta^3\Omega^2 x_*$; the Holstein budget is at most $2^{20}U\beta^3\Omega^2(1+\beta t)$. Condition \eqref{eq:criterion} bounds each quantum budget by $1/64$, since $\beta^3(1+\beta E)=(E+\tau)/\tau^4$.
+
+For weighted charged insertions let $B_I,B_S$ bound subtrees attached to ordinary and source legs. For fixed support radius $R_s$ the ordinary-child cost out of a source parent is at most $C_R Q$, $C_R\ge1$. On $B_I\le1$, $B_S\le C_R$ the ordinary-child contributions are at most $1/4$ and $C_R/4$. Source-child contributions have finite attachment constants and fixed valence $2m$; they are proportional to source amplitude times $(2m)e^{2m B_S}$. A small source disk keeps the rectangle invariant without changing the interaction condition. Root one charge insertion and sum anchors of the opposite charge. The connecting path gives a factor $e^{a d/2}$ by the triangle inequality. The mixed log term is their equal-time correlation since the one-point functions vanish. Constants are uniform in volume, reference and real chemical potential. The conditional partition is real under adjoint and imaginary-time reflection and nonzero by the log series continued from zero residual coupling. It stays positive for small real Hermitian sources, so the charged decay survives averaging with the actual partition weight.
+
+For a uniform Hermitian bilocal pressure source $v\sum_x O_{x,r}$ at fixed $r$ (also use the imaginary combination), use unweighted trees and measure from the actual parent leg. Ordinary-child cost is at most $Q$ independently of $r$ and source-child constants are finite. The per-volume absolute log series gives an $O_r(|v|^2)$ remainder, while the linear coefficient is bounded by $c e^{-a|r|/2}$ with $c$ independent of $r$. Positivity and averaging give $|p_L(v)-p_L(0)|\le c|v|e^{-a|r|/2}+c_r |v|^2$ for the grand-canonical normalized log partition.
+
+At $v=0$, cutting a bare bond costs at most $2\beta t$ in log partition. Cutting an SSH link costs at most $4\beta U$ by interpolating its force and using the full covariance's time integral $U$ and the Duhamel bound $\|B_\alpha\|^2$. Both estimates hold in each sector. Tiling by side-$k$ blocks gives an $O(1/k)$ cut error and at most $\log(2k^2+1)/k^2$ from the count of block allocations. The maximum block sum per site converges to the block concave envelope by approximating the fractions of block densities and adjusting the residual count in a vanishing fraction of blocks. Taking $k\to\infty$ gives the concave canonical limit; the grand-canonical sector sum differs from its maximum by at most $\log(2L^2+1)$ in log partition. Choose supporting slope $-\beta\mu$ at the prescribed interior density. The zero-source gap $\delta_L=L^{-2}[\log Z_{\mathrm{GC}}(0)-\log Z_{\mathrm{can},N}(0)-\beta\mu N]$ vanishes. The sector inequality $Z_{\mathrm{can},N}(\pm v)e^{\beta\mu N}\le Z_{\mathrm{GC}}(\pm v)$ and convex secants bound the absolute canonical derivative per site by $c e^{-a|r|/2}+c_r v+\delta_L/v$ for $v>0$. First take volume to infinity at fixed $v,r$, then $v\to0$ at fixed $r$, and only then let $|r|$ grow. This works at neutral coexistence.
+
+The equation for $\tau_*$ has a unique positive root because $\tau^4/(E+\tau)$ is strictly increasing from zero to infinity. It lies between $(AE)^{1/4}$ and $\max\{(2AE)^{1/4},(2A)^{1/3}\}$, by bounding each term on the right of \eqref{eq:bound} by half the budget at the proposed upper bound. The equation then gives $\tau_*=(L_*UE)^{1/4}\Omega^{1/2}+O(\Omega)$ at fixed $t,U>0$. This concerns the upper bound, not the asymptotic transition temperature.
+
+\section{Comparison with the bare Fermi-surface scale}
+Let $x=\Omega/t$, $u=U/t$, $e=E/t$, $d=\min(n,2-n)$, and $Y=C_\infty x\sqrt{\lambda_{\rm FS}}$. The exact benchmark coefficient is $C_\infty=\sqrt{\sup\sigma(\mathcal G_2)}/(2\pi)\simeq0.18273$ \cite{kaygamma,kay}. On $\ell^2(\mathbb N_0)$ the soft-kernel matrix is
+\[
+ (\mathcal G_2)_{ij}=
+ \frac{\mathbf1_{i\ne j}|i-j|^{-2}+(i+j+1)^{-2}
+ -2\delta_{ij}\sum_{\ell=1}^{i}\ell^{-2}}{\sqrt{(2i+1)(2j+1)}} ,
+\]
+where the first term means zero on the diagonal. For the dispersion $-2t(\cos k_x+\cos k_y)$ let $\mu_0$ be the bare Fermi energy and $N_0$ the density of states per spin per site. Write $\lambda_{\rm FS}=a_j(n)u$ with
+\[
+ a_H=tN_0(\mu_0),\qquad
+ a_S=4tN_0(\mu_0)\left[1+\left(\mu_0/(4t)\right)^2\right].
+\]
+For SSH the squared bond vertex in direction $\ell$ is $4g^2\cos^2[(k_\ell+k'_\ell)/2]$, with $g^2=U\Omega/2$. Sine averages vanish and square symmetry gives $\langle\cos k_\ell\rangle=-\mu_0/(4t)$. Summing both directions and using $2N_0\langle |g_{\mathbf k\mathbf k'}|^2\rangle/\Omega$ gives $a_S$. The Holstein squared vertex is $g^2$. These are bare parameters. A bounded-DOS scalar Eliashberg height theorem does not apply to this singular square-lattice DOS, even at a regular, off-center Fermi level. We use its strong-coupling coefficient as a bare numerical benchmark, not its hypotheses or its linearized onset.
+
+At positive $x,u$ a sufficient test for $k_BT_{\rm pair}\le tY$ is
+\begin{equation}\label{eq:linear}
+ \frac{Y^2}{e+Y}\ge\frac{L_*}{C_\infty^2a_j(n)} .
+\end{equation}
+For an independent comparison, insert half the pair-phase gradient as the bond Peierls phase. The isothermal response subtracts a nonnegative Duhamel current term \cite{hvr}, leaving
+\[
+ \rho_s\le \frac1{4V}\sum_{\alpha\parallel x}\langle(t-b_\alpha)B_\alpha\rangle ,
+\]
+where $b_\alpha$ is present only for SSH. The bare hopping sum has one-body spectrum in $[-2,2]$ and zero trace, so its expectation is at most $2Vd$. For SSH the full periodic covariance is a positive periodized exponential with integral $U$. Gaussian integration by parts expresses $-\langle b_\alpha B_\alpha\rangle$ as its convolution with $\langle B_\alpha(s)B_\alpha(0)\rangle$. This correlator is at most $\langle B_\alpha^2\rangle$ by convexity of the spectral sum between its equal endpoints. The single-spin identity $B_{\alpha,\sigma}^2=n_{i\sigma}+n_{j\sigma}-2n_{i\sigma}n_{j\sigma}$ bounds it by the two electron occupations, and also by the hole occupations. Since $B_\alpha^2\le2(B_{\alpha,\uparrow}^2+B_{\alpha,\downarrow}^2)$, summation gives $\sum_{\alpha\parallel x}\langle B_\alpha^2\rangle\le4Vd$. Under the conventional charge-two BKT jump \cite{nk}, the sufficient stiffness crossings are therefore
+\[
+ Y\ge\pi d/4\quad\text{(Holstein)},\qquad
+ Y\ge\pi d(1+2u)/4\quad\text{(bond SSH)}.
+\]
+The correlation theorem does not assume the jump.
+
+\subsection{A strict region missed by the stiffness crossings}
+Take $3/4<n<1$, $1/2<u<1$, $1/4<Y<1/2$, and $64L_*<C_\infty^2a_j(n)<128L_*$. The left side of \eqref{eq:linear} exceeds $1/40$ and the right side is less than $1/64$, so $\tau_*<tY$. Both stiffness crossings exceed $9/16$. We give two exact witnesses, without numerical inversion near the saddle.
+
+Write $w=|\mu_0|/(4t)$ and choose $\mu_0<0$. The two arcsine laws for $\cos k_x,\cos k_y$ convolve to
+\[
+ tN_0(4tw)=\frac{I(w)}{\pi^2(1+w)},\qquad
+ I(w)=\int_0^{\pi/2}\frac{d\theta}{\sqrt{1-[(1-w)/(1+w)]^2\sin^2\theta}}.
+\]
+Indeed, the convolution for $\cos k_x+\cos k_y=2w$ has integration limits $2w-1,1$. Center at $w$ and set the offset equal to $(1-w)\sin\theta$ on the positive half; the energy Jacobian is $1/(2t)$. The bound $tN_0(4tw)\le1/(4\pi\sqrt w)$ follows by using the minimum denominator. Then $1-n(w)=8\int_0^w tN_0(4ts)\,ds\le4\sqrt w/\pi$. For $0<w\le2^{-10}$ this implies $3/4<n(w)<1$, and at the upper endpoint $a_j<24$. The integral is continuous for $w>0$ and diverges as $w$ tends to zero. Thus for each model a root $w_j\in(0,2^{-10})$ of $C_\infty^2a_j(w_j)=96L_*$ exists. At $u=3/4$ and $x=(512L_*)^{-1/2}$, $Y=3/8$ exactly.
+
+For a specified dyadic $w$, set $b_H=1$, $b_S=4$, $w=2^{-72000L_*/b_j}$ and use $u=3/4$, $x=(3/8)/(C_\infty\sqrt{u a_j})$. To check the strip, put $\delta=2\sqrt w/(1+w)$. Substituting $s=\cot\theta$ gives an integral of $[(s^2+\delta^2)(1+s^2)]^{-1/2}$ over $[0,\infty)$. On $[0,1]$ the integrand differs downward from $(s^2+\delta^2)^{-1/2}$ by at most $s/2$; the integral over $[1,\infty)$ is at most one. Also $\operatorname{arsinh}(1/\delta)-\frac12\log(1/w)$ lies in $[0,1)$: it is the logarithm of $[(1+w)+\sqrt{(1+w)^2+4w}]/2$, between $1$ and $2$. Thus $-\frac14\le I(w)-\frac12\log(1/w)<2$. The series $2\operatorname{artanh}(1/3)$ gives $2/3<\log 2<7/10$, hence $24000L_*-8<b_j I(w)<25200L_*+8$. Using $3<\pi<22/7$, the factor multiplying $b_j I$ in $a_j$ lies between $99/1000$ and $101/900$, including the SSH factor $1+w^2$. The coarse bounds $9/50<C_\infty<1/5$ give
+\[
+ \frac{24048981}{312500}L_*< C_\infty^2a_j<
+ \frac{636502}{5625}L_* .
+\]
+This is strictly inside the required band. The region uses unusually large bare weights exponentially close to the saddle. At any fixed regular filling \eqref{eq:linear} eventually fails as $x$ tends to zero.
+The companion proof derives the coarse spectral bounds on $C_\infty$ by a three-coordinate trial and a weighted Schur estimate.
+
+\subsection*{Relation to earlier work}
+Lebowitz and Macris \cite{lebo} analyzed neutral ordering of spinless fermions at the half-filling symmetry point in the annealed static Holstein model. Their displacement-order theorems do not address the pair density or flux response here. Zhang et al.\ \cite{zhang} used two-particle data to estimate a bond-bipolaron transition scale. Kim, Han, and Sous \cite[Eq.~(19)]{kim} treated the hierarchy $\Omega\ll t\ll U$. Their approximate semiclassical dilute-bipolaron transition scale near overlap, in energy units, is proportional to
+\[
+ t\sqrt{\Omega/U}\,
+ \exp\!\left[-3.2\,\frac{\sqrt{tU}}{\Omega}
+              +0.46\,\sqrt{U/t}\right].
+\]
+At fixed $t,U$ in that hierarchy this decreases faster than any positive power of $\Omega$. It is compatible with, and much smaller than, the upper bound here; it is based on instanton and dilute-gas approximations, not a thermodynamic bound at arbitrary fixed density.
+
+The linear-in-$\Omega$ comparison at fixed regular density remains open. Neither the upper bound nor the static endpoint supplies a nonzero transition or a finite-mass helicity estimate.
+
+\section*{Supporting material}
+The companion proof and the rational and Lean replays record the fixed-density argument and the finite arithmetic. The replays do not formalize the thermodynamic or analytic arguments.
+\artifact{Article DOI}{\ADIABATICDOI}
+\artifact{Supplement DOI}{\ADIABATICSUPPDOI}
+\par\noindent Source repository: \href{\ADIABATICREPO}{\nolinkurl{github.com/SuperMatics-Inc/slow-phonon-pair-suppression}}
+
+{\raggedright
+\bibliographystyle{plain}
+\bibliography{refs}
+\par}
+\end{document}
